@@ -1,0 +1,113 @@
+:root {
+    --font-family: 'Poppins', sans-serif;
+    --text-color: #ffffff;
+    --text-dim-color: rgba(255, 255, 255, 0.3);
+    --bg-color-1: #09203f;
+    --bg-color-2: #537895;
+    --accent-color: #6dd5ed;
+    --panel-bg: rgba(0, 0, 0, 0.25);
+}
+
+/* === Definisi Tema === */
+.theme-deep-space { --bg-color-1: #09203f; --bg-color-2: #537895; --accent-color: #6dd5ed; }
+.theme-sunset { --bg-color-1: #FF512F; --bg-color-2: #DD2476; --accent-color: #ffc837; }
+.theme-ocean { --bg-color-1: #2193b0; --bg-color-2: #6dd5ed; --accent-color: #ffffff; }
+.theme-forest { --bg-color-1: #134E5E; --bg-color-2: #71B280; --accent-color: #f2e9e4; }
+
+body {
+    margin: 0;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background: linear-gradient(-45deg, var(--bg-color-1), var(--bg-color-2), #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    transition: background 0.5s;
+    overflow: hidden;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.clock-container {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+}
+
+.clock-face { display: none; text-align: center; }
+.clock-face.active { display: block; animation: zoomIn 0.5s ease-out; }
+
+@keyframes zoomIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Tampilan Jam Digital */
+#digital-clock .date-display { font-size: 1.2rem; opacity: 0.8; letter-spacing: 1px; }
+#digital-clock .time-display { font-size: 7rem; font-weight: 700; line-height: 1; }
+
+/* Tampilan Jam Kata */
+.word-clock-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 8px 12px;
+    max-width: 600px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.word-clock-grid span {
+    color: var(--text-dim-color);
+    transition: color 0.5s, text-shadow 0.5s;
+}
+.word-clock-grid span.lit {
+    color: var(--text-color);
+    text-shadow: 0 0 10px var(--accent-color), 0 0 20px var(--accent-color);
+}
+
+/* Tombol & Panel Pengaturan */
+.settings-fab {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: var(--panel-bg);
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 1.8rem;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+}
+.settings-fab:hover { transform: scale(1.1); }
+
+.settings-panel {
+    position: fixed;
+    top: 0;
+    right: -320px; /* Mulai dari luar layar */
+    width: 300px;
+    height: 100%;
+    background: var(--panel-bg);
+    backdrop-filter: blur(15px);
+    padding: 20px;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+    transition: right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.settings-panel.open { right: 0; }
+.settings-panel h3 { margin-top: 0; border-bottom: 1px solid var(--text-dim-color); padding-bottom: 10px; }
+.setting-group { margin-top: 25px; }
+.setting-group label { display: block; margin-bottom: 10px; font-weight: 600; }
+.toggle-switch { display: flex; border: 1px solid var(--text-dim-color); border-radius: 8px; }
+.toggle-switch button { flex: 1; background: transparent; border: none; color: var(--text-color); padding: 10px; cursor: pointer; transition: background-color 0.3s; }
+.toggle-switch button.active { background-color: var(--accent-color); color: #000; font-weight: bold; }
+.toggle-switch button:first-child { border-radius: 7px 0 0 7px; }
+.toggle-switch button:last-child { border-radius: 0 7px 7px 0; }
+.theme-selector { display: flex; gap: 15px; }
+.theme-swatch { width: 40px; height: 40px; border-radius: 50%; cursor: pointer; border: 2px solid transparent; transition: border-color 0.3s; }
+.theme-swatch:hover { border-color: var(--text-color); }

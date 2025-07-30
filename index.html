@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChronoGlow 3.0 - The Ultimate Clock</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-deep-space"> <main class="clock-container">
+        <div id="digital-clock" class="clock-face active">
+            <div id="date-display" class="date-display"></div>
+            <div class="time-display">
+                <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
+            </div>
+        </div>
+
+        <div id="word-clock" class="clock-face">
+            <div id="word-clock-display" class="word-clock-grid">
+                </div>
+        </div>
+    </main>
+
+    <div id="settings-toggle" class="settings-fab">
+        <i class='bx bxs-palette'></i>
+    </div>
+
+    <aside id="settings-panel" class="settings-panel">
+        <h3>Pengaturan</h3>
+        
+        <div class="setting-group">
+            <label>Mode Jam</label>
+            <div class="toggle-switch">
+                <button id="digital-mode-btn" class="active">Digital</button>
+                <button id="word-mode-btn">Kata</button>
+            </div>
+        </div>
+
+        <div class="setting-group">
+            <label>Pilih Tema</label>
+            <div id="theme-selector" class="theme-selector">
+                <div class="theme-swatch" data-theme="deep-space" style="background: linear-gradient(45deg, #09203f, #537895);"></div>
+                <div class="theme-swatch" data-theme="sunset" style="background: linear-gradient(45deg, #FF512F, #DD2476);"></div>
+                <div class="theme-swatch" data-theme="ocean" style="background: linear-gradient(45deg, #2193b0, #6dd5ed);"></div>
+                <div class="theme-swatch" data-theme="forest" style="background: linear-gradient(45deg, #134E5E, #71B280);"></div>
+            </div>
+        </div>
+    </aside>
+
+    <script src="script.js"></script>
+</body>
+</html>
